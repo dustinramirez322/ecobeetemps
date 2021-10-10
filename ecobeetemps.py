@@ -5,13 +5,13 @@ from datetime import datetime
 def refresh_token():
     #Read apiKey and previous refresh_token from text files
     with open('apiKey.txt') as a:
-        apiKey = a.read()
+        apiKey = a.read().splitlines()
     with open('refresh_token.txt') as r:
-        refresh_token = r.read()
+        refresh_token = r.read().splitlines()
 
     #Generate a new token via the ecobee api
     newtoken = requests.post(
-        'https://api.ecobee.com/token?grant_type=refresh_token&refresh_token=' + refresh_token + '&client_id=' + apiKey).json()
+        'https://api.ecobee.com/token?grant_type=refresh_token&refresh_token=' + refresh_token[0] + '&client_id=' + apiKey[0]).json()
 
     #Update the access_token and refresh_token files with new values
     with open('access_token.txt', 'w') as a:
@@ -50,4 +50,3 @@ def get_temps():
     #write temp information to file
     with open('temps.txt', 'a') as t:
         t.write(date + ',' + str(outsideC) + ',' + str(floor2C) + ',' + str(floor3C))
-
