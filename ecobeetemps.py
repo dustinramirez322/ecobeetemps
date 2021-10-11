@@ -49,4 +49,4 @@ def get_temps():
 
     #write temp information to file
     with open('temps.txt', 'a') as t:
-        t.write(date + ',' + str(outsideC) + ',' + str(floor2C) + ',' + str(floor3C))
+        t.write(date + ',' + str(outsideC) + ',' + str(floor2C) + ',' + str(floor3C) + '\n')
