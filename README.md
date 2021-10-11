@@ -29,9 +29,11 @@ Once this step is complete the Developer and My Apps tab will show when you logi
 ![image](https://user-images.githubusercontent.com/56071884/136806524-55c215b7-682a-440c-b9f4-d607621cc048.png)
 
 8.  Confirm your device:
+
 ![image](https://user-images.githubusercontent.com/56071884/136809699-97166619-a3dc-4ab7-88cf-5ee87ef087d9.png)  ![image](https://user-images.githubusercontent.com/56071884/136809757-cb646f18-7d4c-4fa7-a429-d97333af369f.png)
   
 9.  Immediately run the access_token script.  You will receive an access and refresh token:
+
 '{\n  "access_token": "This_is_a_super_long_and_fake_access_token_super_long_super_fake",\n  "token_type": "Bearer",\n  "expires_in": 3600,\n  "scope": "openid,smartWrite,offline_access",\n  "refresh_token": "This_is_a_shorter_but_still_fake_refresh_token"\n}'
 
 10.  Replace the access_token.txt and refresh_token.txt with the information from the acces_token script.
