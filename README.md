@@ -9,7 +9,7 @@ Once this step is complete the Developer and My Apps tab will show when you logi
 
 2.  Select the developer option and create a new application within your console:
 
-file:///home/dustin/Downloads/Screenshot%202021-10-11%20at%2008-55-45%20https%20www%20ecobee%20com.png![image](https://user-images.githubusercontent.com/56071884/136794194-56bdc9b3-d905-4b36-95db-8adb7b214b97.png)
+![image](https://user-images.githubusercontent.com/56071884/136794194-56bdc9b3-d905-4b36-95db-8adb7b214b97.png)
 !Note! Set Authorization method to ecobee PIN to use this guide
 
   
