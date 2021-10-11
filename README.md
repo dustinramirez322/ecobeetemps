@@ -39,3 +39,8 @@ Once this step is complete the Developer and My Apps tab will show when you logi
 10.  Replace the access_token.txt and refresh_token.txt with the information from the acces_token script.
   
 11.  Begin pulling data...try the get_temps to see local temperature and two sensors information.
+
+Here's an example graph I created with this data:
+
+![image](https://user-images.githubusercontent.com/56071884/136810690-9a444374-e691-485a-8e6d-dea7611b4c4d.png)
+
