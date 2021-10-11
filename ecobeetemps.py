@@ -2,6 +2,21 @@ import requests
 import json
 from datetime import datetime
 
+def authorize():
+    with open('apiKey.txt') as a:
+        apiKey = a.read().splitlines()
+    authorize = requests.get(
+        'https://api.ecobee.com/authorize?response_type=ecobeePin&client_id=' + apiKey[0] + '&scope=smartWrite').json()
+    return authorize
+
+def access_token():
+    with open('code.txt') as c:
+        code = c.read().splitlines()
+    with open('apiKey.txt') as a:
+        apiKey = a.read().splitlines()
+    access_token = requests.post('https://api.ecobee.com/token?grant_type=ecobeePin&code=' + code[0] + '&client_id=' + apiKey[0])
+    return access_token
+
 def refresh_token():
     #Read apiKey and previous refresh_token from text files
     with open('apiKey.txt') as a:

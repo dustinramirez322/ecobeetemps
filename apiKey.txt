@@ -1,1 +1,1 @@
-fakeAPIkey123abc
+fakeApiKey123abc
