@@ -3,19 +3,61 @@ import json
 from datetime import datetime
 
 def authorize():
-    with open('apiKey.txt') as a:
-        apiKey = a.read().splitlines()
-    authorize = requests.get(
-        'https://api.ecobee.com/authorize?response_type=ecobeePin&client_id=' + apiKey[0] + '&scope=smartWrite').json()
-    return authorize
+    try:
+        try:
+            #Read API key file
+            #This file should be manually created by the user
+            #Your application's API key must be retrieved from ecobee.com
+            with open('apiKey.txt') as a:
+                apiKey = a.read().splitlines()
+
+        except FileNotFoundError:
+            print("We're having trouble finding your apiKey...check to make sure the apiKey.txt file is "
+                  "in the correctplace")
+            return
+
+        #Request initial authorization information using the API key
+        authorize = requests.get(
+            'https://api.ecobee.com/authorize?response_type=ecobeePin&client_id=' + apiKey[0] + '&scope=smartWrite').json()
+
+        #Write the code that will be used in future calls to a text file
+        with open('code.txt', 'w') as c:
+            c.write(authorize['code'])
+
+        #Notifies the user that their code has been written to the text file
+        #Provides the authorization Pin and provides basic instructions required by the user to continue
+        print('Your code is ' + authorize['code'] + ' and has been written to the code.txt file.\n \
+            Your pin is ' + authorize['ecobeePin' + ' and expires in 5 minutes.  Quickly authorize your app \
+            at ecobee.com before moving onto the next step.']
+            )
+
+    except requests.exceptions.ConnectionError:
+        print("You're unable to reach ecobee's API...check your internet connection")
+        #do something for this
+        #do something for that
+
+    finally:
+        pass
+        #do something
 
 def access_token():
+    #Retrieve the recently created code and API key
     with open('code.txt') as c:
         code = c.read().splitlines()
     with open('apiKey.txt') as a:
         apiKey = a.read().splitlines()
+
+    #Submits a request for an access and refresh token to be used in future calls
     access_token = requests.post('https://api.ecobee.com/token?grant_type=ecobeePin&code=' + code[0] + '&client_id=' + apiKey[0])
-    return access_token
+
+    #Write access and refresh token to files
+    with open('access_token.txt', 'w') as at:
+        at.write(access_token['access_token'])
+    with open('refresh_token.txt', 'w') as r:
+        r.write(access_token['refresh_token'])
+
+    #Relay what the function has accomplished
+    print('Your access and refresh tokens have been written to access_token.txt and refresh_token.txt')
 
 def refresh_token():
     #Read apiKey and previous refresh_token from text files
