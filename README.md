@@ -35,5 +35,6 @@ Once this step is complete the Developer and My Apps tab will show when you logi
 
 Here's an example graph I created with this data:
 
-![image](https://user-images.githubusercontent.com/56071884/136810690-9a444374-e691-485a-8e6d-dea7611b4c4d.png)
+![image](https://user-images.githubusercontent.com/56071884/139538316-79305e57-7cba-4ff7-b04e-9f56f8dd3834.png)
+
 
