@@ -26,10 +26,9 @@ def authorize():
 
         #Notifies the user that their code has been written to the text file
         #Provides the authorization Pin and provides basic instructions required by the user to continue
-        print('Your code is ' + authorize['code'] + ' and has been written to the code.txt file.\n \
-            Your pin is ' + authorize['ecobeePin' + ' and expires in 5 minutes.  Quickly authorize your app \
-            at ecobee.com before moving onto the next step.']
-            )
+        print('Your code is ' + authorize['code'] + ' and has been written to the code.txt file. \n \
+             Your pin is ' + authorize['ecobeePin'] + ' and expires in 5 minutes.  \n \
+             Quickly authorize your app at ecobee.com before moving onto the next step.')
 
     except requests.exceptions.ConnectionError:
         print("You're unable to reach ecobee's API...check your internet connection")
